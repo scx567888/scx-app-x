@@ -5,38 +5,87 @@
 
     <parent>
         <groupId>cool.scx</groupId>
-        <artifactId>scx</artifactId>
-        <version>3.3.8</version>
+        <artifactId>scx-parent</artifactId>
+        <version>26</version>
+        <relativePath/>
     </parent>
 
     <artifactId>scx-app-x</artifactId>
     <packaging>jar</packaging>
+    <version>3.4.0</version>
 
     <name>SCX App X</name>
-    <url>https://github.com/scx567888/scx</url>
+    <url>https://github.com/scx567888/scx-app-x</url>
     <description>
         SCX App X
     </description>
 
+    <developers>
+        <developer>
+            <id>scx567888</id>
+            <name>scx567888</name>
+            <email>scx567888@outlook.com</email>
+        </developer>
+    </developers>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>https://github.com/scx567888/scx-app-x/blob/master/LICENSE</url>
+        </license>
+    </licenses>
+
+    <scm>
+        <connection>scm:git:https://github.com/scx567888/scx-app-x.git</connection>
+        <developerConnection>scm:git:https://github.com/scx567888/scx-app-x.git</developerConnection>
+        <url>https://github.com/scx567888/scx-app-x</url>
+    </scm>
+
+    <build>
+        <plugins>
+
+            <!-- 此插件用于将项目打包为 可执行 jar 包-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <!-- 因为 scx 并不是可执行 jar 包, 所以此处不添加 classpath 到描述文件中 -->
+                            <addClasspath>false</addClasspath>
+                        </manifest>
+                    </archive>
+                    <!-- 此处因为没有类似 maven-source-plugin 插件中 excludeResources 的选项 -->
+                    <!-- 所以在这里手动排除资源文件 , 具体文件说明见下方 -->
+                    <excludes>
+                        <!-- 默认 git 占位空文件 -->
+                        <exclude>/.gitkeep</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+
     <dependencies>
 
         <dependency>
-            <groupId>${project.groupId}</groupId>
+            <groupId>cool.scx</groupId>
             <artifactId>scx-app</artifactId>
-            <version>${project.version}</version>
+            <version>${scx.version}</version>
         </dependency>
 
         <dependency>
-            <groupId>${project.groupId}</groupId>
+            <groupId>cool.scx</groupId>
             <artifactId>scx-reflect</artifactId>
-            <version>${project.version}</version>
+            <version>${scx.version}</version>
         </dependency>
 
         <!-- 测试包 -->
         <dependency>
-            <groupId>${project.groupId}</groupId>
+            <groupId>cool.scx</groupId>
             <artifactId>scx-jdbc-mysql</artifactId>
-            <version>${project.version}</version>
+            <version>${scx.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -44,9 +93,18 @@
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
+            <version>${testng.version}</version>
             <scope>test</scope>
         </dependency>
 
     </dependencies>
+
+    <properties>
+
+        <scx.version>3.4.0</scx.version>
+        <testng.version>7.10.2</testng.version>
+
+    </properties>
+
 
 </project>
