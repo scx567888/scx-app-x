@@ -1,7 +1,7 @@
 package cool.scx.app.x.test;
 
-import cool.scx.app.Scx;
-import cool.scx.app.ScxModule;
+import cool.scx.app.ScxApp;
+import cool.scx.app.ScxAppModule;
 import cool.scx.app.enumeration.ScxAppFeature;
 import cool.scx.app.x.crud.CRUDModule;
 import cool.scx.app.x.fix_table.FixTableModule;
@@ -10,7 +10,7 @@ import cool.scx.app.x.redirect.RedirectModule;
 import cool.scx.app.x.static_server.StaticServerModule;
 import org.testng.annotations.Test;
 
-public class ExtModuleTest extends ScxModule {
+public class ExtModuleTest extends ScxAppModule {
 
     public static void main(String[] args) {
         test1();
@@ -18,7 +18,7 @@ public class ExtModuleTest extends ScxModule {
 
     @Test
     public static void test1() {
-        Scx.builder()
+        ScxApp.builder()
                 .setMainClass(ExtModuleTest.class)
                 .addModule(
                         new ExtModuleTest(),
@@ -34,7 +34,7 @@ public class ExtModuleTest extends ScxModule {
     }
 
     @Override
-    public void start(Scx scx) {
+    public void start(ScxApp scx) {
         scx.fixTable();
     }
 

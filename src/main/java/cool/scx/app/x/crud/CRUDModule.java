@@ -1,7 +1,7 @@
 package cool.scx.app.x.crud;
 
-import cool.scx.app.Scx;
-import cool.scx.app.ScxModule;
+import cool.scx.app.ScxApp;
+import cool.scx.app.ScxAppModule;
 import cool.scx.app.x.crud.parameter_handler.crud_list_param.CRUDListParamParameterHandlerBuilder;
 import cool.scx.app.x.crud.parameter_handler.crud_update_param.CRUDUpdateParamParameterHandlerBuilder;
 
@@ -15,7 +15,7 @@ import static java.lang.System.getLogger;
  * @author scx567888
  * @version 0.0.1
  */
-public class CRUDModule extends ScxModule {
+public class CRUDModule extends ScxAppModule {
 
     private static final Logger logger = getLogger(CRUDModule.class.getName());
 
@@ -24,7 +24,7 @@ public class CRUDModule extends ScxModule {
     }
 
     @Override
-    public void start(Scx scx) {
+    public void start(ScxApp scx) {
         //这里添加额外的参数处理器 保证 CRUDListParam 类型的参数永不为空
         scx.scxWeb().addParameterHandlerBuilder(0, new CRUDListParamParameterHandlerBuilder());
         scx.scxWeb().addParameterHandlerBuilder(0, new CRUDUpdateParamParameterHandlerBuilder());

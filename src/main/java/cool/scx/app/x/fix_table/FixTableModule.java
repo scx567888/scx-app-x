@@ -1,7 +1,7 @@
 package cool.scx.app.x.fix_table;
 
-import cool.scx.app.Scx;
-import cool.scx.app.ScxModule;
+import cool.scx.app.ScxApp;
+import cool.scx.app.ScxAppModule;
 import cool.scx.common.util.ConsoleUtils;
 
 import static java.lang.System.Logger.Level.DEBUG;
@@ -13,7 +13,7 @@ import static java.lang.System.Logger.Level.ERROR;
  * @author scx567888
  * @version 0.0.1
  */
-public class FixTableModule extends ScxModule {
+public class FixTableModule extends ScxAppModule {
 
     private static final System.Logger logger = System.getLogger(FixTableModule.class.getName());
 
@@ -42,7 +42,7 @@ public class FixTableModule extends ScxModule {
     }
 
     @Override
-    public void start(Scx scx) {
+    public void start(ScxApp scx) {
         if (!scx.checkDataSource()) {
             logger.log(ERROR, "数据源连接失败!!! 已跳过修复表!!!");
             return;
