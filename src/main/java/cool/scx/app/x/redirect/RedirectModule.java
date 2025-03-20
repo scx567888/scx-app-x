@@ -1,8 +1,8 @@
 package cool.scx.app.x.redirect;
 
 import cool.scx.ansi.Ansi;
-import cool.scx.app.Scx;
-import cool.scx.app.ScxModule;
+import cool.scx.app.ScxApp;
+import cool.scx.app.ScxAppModule;
 import cool.scx.http.routing.Router;
 import cool.scx.http.x.XHttpServer;
 import cool.scx.http.x.XHttpServerOptions;
@@ -16,7 +16,7 @@ import java.lang.System.Logger;
  * @author scx567888
  * @version 0.0.1
  */
-public class RedirectModule extends ScxModule {
+public class RedirectModule extends ScxAppModule {
 
     private static final Logger logger = System.getLogger(RedirectModule.class.getName());
 
@@ -60,7 +60,7 @@ public class RedirectModule extends ScxModule {
     }
 
     @Override
-    public void start(Scx scx) {
+    public void start(ScxApp scx) {
         //只有当开启 https 的时候才进行转发
         if (scx.scxOptions().isHttpsEnabled()) {
             startRedirect(this.port);

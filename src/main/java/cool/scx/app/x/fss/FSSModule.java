@@ -1,7 +1,7 @@
 package cool.scx.app.x.fss;
 
-import cool.scx.app.Scx;
-import cool.scx.app.ScxModule;
+import cool.scx.app.ScxApp;
+import cool.scx.app.ScxAppModule;
 
 import java.lang.System.Logger;
 
@@ -11,7 +11,7 @@ import java.lang.System.Logger;
  * @author scx567888
  * @version 0.0.1
  */
-public class FSSModule extends ScxModule {
+public class FSSModule extends ScxAppModule {
 
     private static final Logger logger = System.getLogger(FSSModule.class.getName());
 
@@ -20,7 +20,7 @@ public class FSSModule extends ScxModule {
     }
 
     @Override
-    public void start(Scx scx) {
+    public void start(ScxApp scx) {
         FSSConfig.initConfig(scx);
     }
 
