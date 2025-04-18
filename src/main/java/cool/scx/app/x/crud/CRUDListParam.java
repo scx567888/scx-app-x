@@ -1,10 +1,10 @@
 package cool.scx.app.x.crud;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import cool.scx.data.field_filter.FieldFilter;
+import cool.scx.data.field_policy.FieldPolicy;
 import cool.scx.data.query.Query;
 
-import static cool.scx.data.field_filter.serializer.FieldFilterDeserializer.FIELD_FILTER_DESERIALIZER;
+import static cool.scx.data.field_policy.serializer.FieldPolicyDeserializer.FIELD_POLICY_DESERIALIZER;
 import static cool.scx.data.query.serializer.QueryDeserializer.QUERY_DESERIALIZER;
 
 
@@ -29,8 +29,9 @@ public class CRUDListParam {
         return QUERY_DESERIALIZER.deserializeQuery(query);
     }
 
-    public FieldFilter getFieldFilter() {
-        return FIELD_FILTER_DESERIALIZER.deserializeFieldFilter(fieldFilter);
+    public FieldPolicy getFieldFilter() {
+        //我们需要去掉表达式 防止客户端 sql 注入
+        return FIELD_POLICY_DESERIALIZER.deserializeFieldFilter(fieldFilter).clearFieldExpressions();
     }
 
 }
