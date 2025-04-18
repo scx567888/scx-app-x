@@ -1,6 +1,6 @@
 package cool.scx.app.x.crud.exception;
 
-import cool.scx.data.field_filter.FilterMode;
+import cool.scx.data.field_policy.FilterMode;
 import cool.scx.http.exception.BadRequestException;
 import cool.scx.web.vo.Result;
 

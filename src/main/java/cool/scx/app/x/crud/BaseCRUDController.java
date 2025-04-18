@@ -59,7 +59,7 @@ public class BaseCRUDController<T extends BaseModelService> {
     @ScxRoute(value = "", methods = PUT)
     public BaseVo update(CRUDUpdateParam crudUpdateParam) {
         var realObject = crudUpdateParam.getBaseModel(service.entityClass());
-        var updateFilter = crudUpdateParam.getUpdateFilter(service.entityClass(), service.dao().tableInfo());
+        var updateFilter = crudUpdateParam.getUpdateFilter(service.entityClass(), service.dao().table());
         var updatedModel = service.update(realObject, updateFilter);
         return Result.ok(updatedModel);
     }
