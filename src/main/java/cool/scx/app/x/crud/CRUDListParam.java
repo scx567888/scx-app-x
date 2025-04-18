@@ -18,7 +18,7 @@ public class CRUDListParam {
 
     public JsonNode query;
 
-    public JsonNode fieldFilter;
+    public JsonNode fieldPolicy;
 
     /**
      * 拓展参数
@@ -29,9 +29,9 @@ public class CRUDListParam {
         return QUERY_DESERIALIZER.deserializeQuery(query);
     }
 
-    public FieldPolicy getFieldFilter() {
+    public FieldPolicy getFieldPolicy() {
         //我们需要去掉表达式 防止客户端 sql 注入
-        return FIELD_POLICY_DESERIALIZER.deserializeFieldFilter(fieldFilter).clearFieldExpressions();
+        return FIELD_POLICY_DESERIALIZER.deserializeFieldPolicy(fieldPolicy).clearFieldExpressions();
     }
 
 }
