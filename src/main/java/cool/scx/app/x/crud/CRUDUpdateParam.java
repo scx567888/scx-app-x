@@ -34,7 +34,7 @@ public final class CRUDUpdateParam {
         return CRUDHelper.mapToBaseModel(this.updateModel, modelClass);
     }
 
-    public FieldPolicy getUpdateFilter(Class<? extends BaseModel> modelClass, AnnotationConfigTable scxDaoTableInfo) {
+    public FieldPolicy getUpdatePolicy(Class<? extends BaseModel> modelClass, AnnotationConfigTable scxDaoTableInfo) {
         if (needUpdateFieldNames == null) {
             return excluded();
         }

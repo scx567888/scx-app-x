@@ -37,7 +37,7 @@ public class BaseCRUDController<T extends BaseModelService> {
     @ScxRoute(methods = POST)
     public BaseVo list(CRUDListParam crudListParam) {
         var query = crudListParam.getQuery();
-        var selectFilter = crudListParam.getFieldFilter();
+        var selectFilter = crudListParam.getFieldPolicy();
         var list = service.find(query, selectFilter);
         var total = service.count(query);
         return Result.ok().put("items", list).put("total", total);
@@ -59,8 +59,8 @@ public class BaseCRUDController<T extends BaseModelService> {
     @ScxRoute(value = "", methods = PUT)
     public BaseVo update(CRUDUpdateParam crudUpdateParam) {
         var realObject = crudUpdateParam.getBaseModel(service.entityClass());
-        var updateFilter = crudUpdateParam.getUpdateFilter(service.entityClass(), service.dao().table());
-        var updatedModel = service.update(realObject, updateFilter);
+        var updatePolicy = crudUpdateParam.getUpdatePolicy(service.entityClass(), service.dao().table());
+        var updatedModel = service.update(realObject, updatePolicy);
         return Result.ok(updatedModel);
     }
 
