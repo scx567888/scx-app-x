@@ -39,7 +39,7 @@ public final class CRUDUpdateParam {
             return excluded();
         }
         var legalFieldName = Arrays.stream(needUpdateFieldNames).map(fieldName -> CRUDHelper.checkFieldName(modelClass, fieldName)).toArray(String[]::new);
-        var updateFilter = included(legalFieldName).ignoreNullValue(false);
+        var updateFilter = included(legalFieldName).ignoreNull(false);
         //防止空列更新
         if (SQLBuilderHelper.filterByFieldPolicy(updateFilter, scxDaoTableInfo).length == 0) {
             throw new EmptyUpdateColumnException();
