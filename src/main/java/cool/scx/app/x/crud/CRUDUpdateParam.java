@@ -9,8 +9,7 @@ import cool.scx.data.jdbc.sql_builder.SQLBuilderHelper;
 import java.util.Arrays;
 import java.util.Map;
 
-import static cool.scx.data.field_policy.FieldPolicyBuilder.excluded;
-import static cool.scx.data.field_policy.FieldPolicyBuilder.included;
+import static cool.scx.data.field_policy.FieldPolicyBuilder.*;
 
 /**
  * 更新实体类的封装
@@ -36,10 +35,10 @@ public final class CRUDUpdateParam {
 
     public FieldPolicy getUpdatePolicy(Class<? extends BaseModel> modelClass, AnnotationConfigTable scxDaoTableInfo) {
         if (needUpdateFieldNames == null) {
-            return excluded();
+            return includeAll();
         }
         var legalFieldName = Arrays.stream(needUpdateFieldNames).map(fieldName -> CRUDHelper.checkFieldName(modelClass, fieldName)).toArray(String[]::new);
-        var updateFilter = included(legalFieldName).ignoreNull(false);
+        var updateFilter = include(legalFieldName).ignoreNull(false);
         //防止空列更新
         if (SQLBuilderHelper.filterByFieldPolicy(updateFilter, scxDaoTableInfo).length == 0) {
             throw new EmptyUpdateColumnException();
