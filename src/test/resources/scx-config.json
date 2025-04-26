@@ -1,6 +1,6 @@
 {
   "scx": {
-    "port": 443,
+    "port": 8443,
     "allowed-origin": "*",
     "data-source": {
       "url": "jdbc:mysql://127.0.0.1:3306/scx",
