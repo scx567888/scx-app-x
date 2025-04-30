@@ -4,8 +4,7 @@ import cool.scx.ansi.Ansi;
 import cool.scx.app.ScxApp;
 import cool.scx.app.ScxAppModule;
 import cool.scx.http.routing.Router;
-import cool.scx.http.x.XHttpServer;
-import cool.scx.http.x.XHttpServerOptions;
+import cool.scx.http.x.HttpServer;
 import cool.scx.web.vo.Redirection;
 
 import java.lang.System.Logger;
@@ -43,11 +42,11 @@ public class RedirectModule extends ScxAppModule {
             var newURI = "https" + oldURI.substring(4);
             Redirection.ofTemporary(newURI).accept(c);
         });
-        var httpServer = new XHttpServer(new XHttpServerOptions().port(port));
+        var httpServer = new HttpServer();
         httpServer.onRequest(router);
 
         try {
-            httpServer.start();
+            httpServer.start(port);
             Ansi.ansi().brightMagenta("转发服务器启动成功 http -> https, 端口号 : " + httpServer.localAddress().getPort() + " !!!").println();
         } catch (Exception e) {
             logger.log(Logger.Level.ERROR, "转发服务器启动失败 !!! ", e);
