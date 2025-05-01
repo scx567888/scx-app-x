@@ -4,6 +4,7 @@ import cool.scx.ansi.Ansi;
 import cool.scx.app.ScxApp;
 import cool.scx.app.ScxAppModule;
 import cool.scx.http.routing.Router;
+import cool.scx.http.uri.ScxURI;
 import cool.scx.http.x.HttpServer;
 import cool.scx.web.vo.Redirection;
 
@@ -35,15 +36,12 @@ public class RedirectModule extends ScxAppModule {
      * @param port a int
      */
     public static void startRedirect(int port) {
-        var router = Router.of();
-        router.route().handler(c -> {
-            var oldURI = c.request().uri().toString();
-            // 4 = "http".length()
-            var newURI = "https" + oldURI.substring(4);
-            Redirection.ofTemporary(newURI).accept(c);
-        });
         var httpServer = new HttpServer();
-        httpServer.onRequest(router);
+        httpServer.onRequest(request -> {
+            var oldURI = request.uri();
+            var newURI = ScxURI.of(oldURI).scheme("https");
+            Redirection.ofTemporary(newURI.encode(true)).handle(request.response());
+        });
 
         try {
             httpServer.start(port);
