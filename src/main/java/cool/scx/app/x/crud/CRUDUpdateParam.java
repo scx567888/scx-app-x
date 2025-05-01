@@ -9,7 +9,8 @@ import cool.scx.data.jdbc.sql_builder.SQLBuilderHelper;
 import java.util.Arrays;
 import java.util.Map;
 
-import static cool.scx.data.field_policy.FieldPolicyBuilder.*;
+import static cool.scx.data.field_policy.FieldPolicyBuilder.include;
+import static cool.scx.data.field_policy.FieldPolicyBuilder.includeAll;
 
 /**
  * 更新实体类的封装

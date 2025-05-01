@@ -3,7 +3,6 @@ package cool.scx.app.x.redirect;
 import cool.scx.ansi.Ansi;
 import cool.scx.app.ScxApp;
 import cool.scx.app.ScxAppModule;
-import cool.scx.http.routing.Router;
 import cool.scx.http.uri.ScxURI;
 import cool.scx.http.x.HttpServer;
 import cool.scx.web.vo.Redirection;
