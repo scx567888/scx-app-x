@@ -1,10 +1,8 @@
 package cool.scx.app.x.crud;
 
 import cool.scx.app.base.BaseModel;
-import cool.scx.app.x.crud.exception.EmptyUpdateColumnException;
 import cool.scx.data.field_policy.FieldPolicy;
 import cool.scx.data.jdbc.mapping.AnnotationConfigTable;
-import cool.scx.data.jdbc.sql_builder.SQLBuilderHelper;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -39,12 +37,7 @@ public final class CRUDUpdateParam {
             return includeAll();
         }
         var legalFieldName = Arrays.stream(needUpdateFieldNames).map(fieldName -> CRUDHelper.checkFieldName(modelClass, fieldName)).toArray(String[]::new);
-        var updateFilter = include(legalFieldName).ignoreNull(false);
-        //防止空列更新
-        if (SQLBuilderHelper.filterByFieldPolicy(updateFilter, scxDaoTableInfo).length == 0) {
-            throw new EmptyUpdateColumnException();
-        }
-        return updateFilter;
+        return include(legalFieldName).ignoreNull(false);
     }
 
 }

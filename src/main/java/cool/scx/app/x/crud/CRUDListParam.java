@@ -31,7 +31,7 @@ public class CRUDListParam {
 
     public FieldPolicy getFieldPolicy() {
         //我们需要去掉表达式 防止客户端 sql 注入
-        return FIELD_POLICY_DESERIALIZER.deserializeFieldPolicy(fieldPolicy).clearExpressions();
+        return FIELD_POLICY_DESERIALIZER.deserialize(fieldPolicy).clearAssignFields();
     }
 
 }
