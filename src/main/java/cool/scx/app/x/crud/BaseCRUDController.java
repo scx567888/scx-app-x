@@ -11,7 +11,7 @@ import java.util.Map;
 
 import static cool.scx.app.ScxAppContext.getBean;
 import static cool.scx.app.x.crud.CRUDHelper.findBaseModelServiceClass;
-import static cool.scx.data.build_control.BuildControl.SKIP_IF_NULL;
+import static cool.scx.data.query.BuildControl.SKIP_IF_NULL;
 import static cool.scx.data.query.QueryBuilder.and;
 import static cool.scx.http.method.HttpMethod.*;
 
