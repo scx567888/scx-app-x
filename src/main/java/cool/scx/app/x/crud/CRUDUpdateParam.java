@@ -2,7 +2,7 @@ package cool.scx.app.x.crud;
 
 import cool.scx.app.base.BaseModel;
 import cool.scx.data.field_policy.FieldPolicy;
-import cool.scx.data.jdbc.mapping.AnnotationConfigTable;
+import cool.scx.data.jdbc.mapping.EntityTable;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -32,7 +32,7 @@ public final class CRUDUpdateParam {
         return CRUDHelper.mapToBaseModel(this.updateModel, modelClass);
     }
 
-    public FieldPolicy getUpdatePolicy(Class<? extends BaseModel> modelClass, AnnotationConfigTable scxDaoTableInfo) {
+    public FieldPolicy getUpdatePolicy(Class<? extends BaseModel> modelClass, EntityTable<?> scxDaoTableInfo) {
         if (needUpdateFieldNames == null) {
             return includeAll();
         }
