@@ -81,6 +81,12 @@
             <version>${scx.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>cool.scx</groupId>
+            <artifactId>scx-data-serialization</artifactId>
+            <version>${scx.version}</version>
+        </dependency>
+
         <!-- 测试包 -->
         <dependency>
             <groupId>cool.scx</groupId>
