@@ -77,12 +77,6 @@
 
         <dependency>
             <groupId>cool.scx</groupId>
-            <artifactId>scx-reflect</artifactId>
-            <version>${scx.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>cool.scx</groupId>
             <artifactId>scx-data-serialization</artifactId>
             <version>${scx.version}</version>
         </dependency>
@@ -107,7 +101,7 @@
 
     <properties>
 
-        <scx.version>3.8.6</scx.version>
+        <scx.version>3.8.7</scx.version>
         <testng.version>7.10.2</testng.version>
 
     </properties>

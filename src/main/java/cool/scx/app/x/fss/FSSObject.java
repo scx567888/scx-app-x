@@ -1,6 +1,5 @@
 package cool.scx.app.x.fss;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import cool.scx.app.base.BaseModel;
 import cool.scx.data.jdbc.annotation.Column;
 import cool.scx.data.jdbc.annotation.DataType;
@@ -28,7 +27,7 @@ public class FSSObject extends BaseModel {
     /**
      * 文件存储的路径 (相对与上传根目录的)
      */
-    @JsonIgnore
+    // todo 这里如何隐藏这个字段
     public String[] filePath;
 
     /**

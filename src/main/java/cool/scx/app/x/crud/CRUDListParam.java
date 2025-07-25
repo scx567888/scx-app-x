@@ -1,10 +1,10 @@
 package cool.scx.app.x.crud;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import cool.scx.data.field_policy.FieldPolicy;
 import cool.scx.data.query.Query;
 import cool.scx.data.serialization.DeserializationException;
 import cool.scx.http.exception.BadRequestException;
+import cool.scx.object.node.Node;
 
 import static cool.scx.data.field_policy.FieldPolicyBuilder.includeAll;
 import static cool.scx.data.query.QueryBuilder.query;
@@ -20,14 +20,14 @@ import static cool.scx.data.serialization.QueryDeserializer.deserializeQuery;
  */
 public class CRUDListParam {
 
-    public JsonNode query;
+    public Node query;
 
-    public JsonNode fieldPolicy;
+    public Node fieldPolicy;
 
     /**
      * 拓展参数
      */
-    public JsonNode extParams;
+    public Node extParams;
 
     public Query getQuery() {
         if (query == null || query.isNull()) {

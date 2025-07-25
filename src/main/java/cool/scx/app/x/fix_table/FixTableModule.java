@@ -2,7 +2,6 @@ package cool.scx.app.x.fix_table;
 
 import cool.scx.app.ScxApp;
 import cool.scx.app.ScxAppModule;
-import cool.scx.common.util.ConsoleUtils;
 
 import static java.lang.System.Logger.Level.DEBUG;
 import static java.lang.System.Logger.Level.ERROR;
@@ -29,7 +28,7 @@ public class FixTableModule extends ScxAppModule {
                     *******************************************************
                     """;
             System.err.println(errMessage);
-            var result = ConsoleUtils.readLine().trim();
+            var result = System.console().readLine().trim();
             if ("Y".equalsIgnoreCase(result)) {
                 return true;
             } else if ("N".equalsIgnoreCase(result)) {
