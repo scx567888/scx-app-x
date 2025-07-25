@@ -6,11 +6,13 @@ import cool.scx.app.x.crud.exception.UnknownFieldNameException;
 import cool.scx.common.util.ObjectUtils;
 import cool.scx.data.jdbc.annotation.NoColumn;
 import cool.scx.http.exception.BadRequestException;
-import cool.scx.reflect.ClassInfoFactory;
+import cool.scx.reflect.ClassInfo;
 
 import java.lang.System.Logger;
 import java.util.Map;
 
+import static cool.scx.object.ScxObject.convertValue;
+import static cool.scx.reflect.ScxReflect.typeOf;
 import static java.lang.System.Logger.Level.ERROR;
 
 /**
@@ -36,7 +38,7 @@ public final class CRUDHelper {
      */
     public static <B extends BaseModel> B mapToBaseModel(Map<String, Object> map, Class<B> baseModelClass) {
         try {
-            return ObjectUtils.convertValue(map, baseModelClass, new ObjectUtils.Options().setIgnoreJsonIgnore(true));
+            return convertValue(map, baseModelClass);
         } catch (Exception e) {
             logger.log(ERROR, "将 Map 转换为 BaseModel 时发生异常 : ", e);
             //这里一般就是 参数转换错误
@@ -66,11 +68,11 @@ public final class CRUDHelper {
 
     @SuppressWarnings("unchecked")
     static Class<? extends BaseModelService<?>> findBaseModelServiceClass(Class<?> baseCRUDControllerClass) {
-        var superClass = ClassInfoFactory.getClassInfo(baseCRUDControllerClass).findSuperType(BaseCRUDController.class);
+        var superClass = ((ClassInfo)typeOf(baseCRUDControllerClass)).findSuperType(BaseCRUDController.class);
         if (superClass != null) {
-            var boundType = superClass.type().getBindings().getBoundType(0);
+            var boundType = superClass.bindings().get(0);
             if (boundType != null) {
-                return (Class<? extends BaseModelService<?>>) boundType.getRawClass();
+                return (Class<? extends BaseModelService<?>>) boundType.rawClass();
             } else {
                 throw new IllegalArgumentException(baseCRUDControllerClass.getName() + " : 必须设置泛型参数 !!!");
             }

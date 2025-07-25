@@ -23,7 +23,7 @@ public final class CRUDUpdateParamParameterHandler implements ParameterHandler {
 
     @Override
     public Object handle(RequestInfo requestInfo) throws Exception {
-        var javaType = parameter.type();
+        var javaType = parameter.parameterType();
         var name = parameter.name();
         var required = false;
         var useAllBody = true;

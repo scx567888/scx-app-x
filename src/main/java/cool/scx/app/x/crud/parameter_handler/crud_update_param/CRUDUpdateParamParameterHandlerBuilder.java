@@ -15,7 +15,7 @@ public final class CRUDUpdateParamParameterHandlerBuilder implements ParameterHa
 
     @Override
     public ParameterHandler tryBuild(ParameterInfo parameter) {
-        if (parameter.type().getRawClass() != CRUDUpdateParam.class) {
+        if (parameter.parameterType().rawClass() != CRUDUpdateParam.class) {
             return null;
         }
         return new CRUDUpdateParamParameterHandler(parameter);
