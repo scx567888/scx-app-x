@@ -3,7 +3,6 @@ package cool.scx.app.x.crud;
 import cool.scx.app.base.BaseModel;
 import cool.scx.app.base.BaseModelService;
 import cool.scx.app.x.crud.exception.UnknownFieldNameException;
-import cool.scx.common.util.ObjectUtils;
 import cool.scx.data.jdbc.annotation.NoColumn;
 import cool.scx.http.exception.BadRequestException;
 import cool.scx.reflect.ClassInfo;
@@ -68,7 +67,7 @@ public final class CRUDHelper {
 
     @SuppressWarnings("unchecked")
     static Class<? extends BaseModelService<?>> findBaseModelServiceClass(Class<?> baseCRUDControllerClass) {
-        var superClass = ((ClassInfo)typeOf(baseCRUDControllerClass)).findSuperType(BaseCRUDController.class);
+        var superClass = ((ClassInfo) typeOf(baseCRUDControllerClass)).findSuperType(BaseCRUDController.class);
         if (superClass != null) {
             var boundType = superClass.bindings().get(0);
             if (boundType != null) {
