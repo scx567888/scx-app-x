@@ -25,7 +25,7 @@ public final class ScxAppSQLModule implements ScxAppModule {
         var dataSourceUrl = environment.get("scx.sql.url", String.class);
         var dataSourceUsername = environment.get("scx.sql.username", String.class);
         var dataSourcePassword = environment.get("scx.sql.password", String.class);
-        var dataSourceParameters = environment.get("scx.sql.parameters", String[].class, "[]");
+        var dataSourceParameters = environment.get("scx.sql.parameters", String[].class, new String[0]);
 
         var jdbcConnectionInfo = new JDBCConnectionInfo(
             dataSourceUrl,
