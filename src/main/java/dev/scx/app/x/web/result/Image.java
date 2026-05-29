@@ -1,4 +1,4 @@
-package dev.scx.app.x.web.image;
+package dev.scx.app.x.web.result;
 
 import dev.scx.http.ScxHttpServerRequest;
 import dev.scx.http.exception.BadRequestException;
