@@ -13,6 +13,10 @@ import dev.scx.sql.JDBCConnectionInfo;
 import dev.scx.sql.SQLClient;
 import dev.scx.sql.TypeSQLResolver;
 
+/// ScxAppSQLModule
+///
+/// @author scx567888
+/// @version 0.0.1
 public final class ScxAppSQLModule implements ScxAppModule {
 
     private SQLClient sqlClient;
@@ -60,6 +64,7 @@ public final class ScxAppSQLModule implements ScxAppModule {
             .componentInstance(this.sqlClient);
     }
 
+    /// 暴漏 sqlClient, 方便外部使用
     public SQLClient sqlClient() {
         return this.sqlClient;
     }
