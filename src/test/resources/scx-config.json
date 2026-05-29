@@ -24,10 +24,8 @@
     "fix-table": {
       "enabled": true
     },
-    "web": {
-      "template":{
-        "path": "AppRoot:c"
-      }
+    "template": {
+      "path": "AppRoot:c"
     },
     "cors": {
       "allowed-origin": "*"
