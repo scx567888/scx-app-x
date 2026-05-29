@@ -16,7 +16,6 @@ public class TemplateModule implements ScxAppModule {
     @Override
     public ScxAppModuleDefinition init(ScxEnvironment environment) {
         return ScxAppModuleDefinition.of()
-            .componentSelector(c -> c.getAnnotation(Routes.class) != null)
             .require(ScxAppWebModule.class)
             .startBefore(ScxAppWebModule.class);
     }
