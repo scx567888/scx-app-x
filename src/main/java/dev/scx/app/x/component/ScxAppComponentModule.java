@@ -23,7 +23,8 @@ public final class ScxAppComponentModule implements ScxAppModule {
     @Override
     public void start(ScxApp scxApp) throws Exception {
         Ansi.ansi()
-            .brightYellow("已加载 " + scxApp.componentContainer().componentDefinitions().size() + " 个 Component !!!").println();
+            .brightYellow("已加载 " + scxApp.componentContainer().componentDefinitions().size() + " 个 Component !!!")
+            .println();
     }
 
 }
