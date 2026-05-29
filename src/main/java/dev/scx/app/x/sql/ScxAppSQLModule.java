@@ -34,6 +34,7 @@ public final class ScxAppSQLModule implements ScxAppModule {
             dataSourceParameters
         );
 
+        // 这里额外添加一个 处理 json 的 handler
         var typeSQLResolver = TypeSQLResolver.builder()
             .registerDefaultHandlers()
             .registerHandlerFactory(new ObjectSQLHandlerFactory())
