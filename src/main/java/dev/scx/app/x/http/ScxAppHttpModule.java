@@ -78,7 +78,8 @@ public final class ScxAppHttpModule implements ScxAppModule {
 
         Ansi.ansi()
             .brightGreen("已加载 " + httpRoutes.size() + " 个 Http 路由 !!!").ln()
-            .brightBlue("已加载 " + webSocketRoutes.size() + " 个 WebSocket 路由 !!!").println();
+            .brightBlue("已加载 " + webSocketRoutes.size() + " 个 WebSocket 路由 !!!")
+            .println();
 
         this.httpServer.start(port);
 
@@ -110,6 +111,7 @@ public final class ScxAppHttpModule implements ScxAppModule {
         return httpServer;
     }
 
+    /// 暴漏 router 允许其他模块动态添加路由
     public Router router() {
         return router;
     }
