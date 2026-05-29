@@ -29,9 +29,6 @@ public final class ScxAppCorsModule implements ScxAppModule {
     /// Cors handler
     private CorsHandler corsHandler;
 
-    /// Cors handler 对应的 路由
-    private Route corsHandlerRoute;
-
     private static CorsHandler initCorsHandler(String allowedOriginPattern) {
         if (allowedOriginPattern == null) {
             allowedOriginPattern = "*";
@@ -46,6 +43,11 @@ public final class ScxAppCorsModule implements ScxAppModule {
 
     @Override
     public ScxAppModuleDefinition init(ScxEnvironment environment) {
+        var allowedOrigin = environment.get("scx.cors.allowed-origin", String.class, "*");
+
+        // 设置基本的 handler
+        this.corsHandler = initCorsHandler(allowedOrigin);
+
         return ScxAppModuleDefinition.of()
             .require(ScxAppHttpModule.class)
             .startBefore(ScxAppHttpModule.class);
@@ -57,24 +59,16 @@ public final class ScxAppCorsModule implements ScxAppModule {
 
         var router = httpModule.router();
 
-        var allowedOrigin = scxApp.environment().get("scx.cors.allowed-origin", String.class, "*");
-
-        // 设置基本的 handler
-        this.corsHandler = initCorsHandler(allowedOrigin);
-
         // 注册路由
-        this.corsHandlerRoute = Route.of(PathMatcher.any(), MethodMatcher.any(), corsHandler);
+        var corsHandlerRoute = Route.of(PathMatcher.any(), MethodMatcher.any(), corsHandler);
 
         // 使用较靠前的优先级
-        router.route(-10000, this.corsHandlerRoute);
+        router.route(-10000, corsHandlerRoute);
     }
 
+    /// 暴漏 CorsHandler 允许外部动态修改.
     public CorsHandler corsHandler() {
         return corsHandler;
-    }
-
-    public Route corsHandlerRoute() {
-        return corsHandlerRoute;
     }
 
 }
