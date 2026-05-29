@@ -1,9 +1,12 @@
 package dev.scx.app.x.static_server;
 
-
 import static dev.scx.app.x.static_server.StaticServerType.SINGLE_FILE;
 import static dev.scx.app.x.static_server.StaticServerType.STATIC_FILES;
 
+/// ScxAppStaticServerModuleHelper
+///
+/// @author scx567888
+/// @version 0.0.1
 final class ScxAppStaticServerModuleHelper {
 
     public static StaticServerType toType(String type) {

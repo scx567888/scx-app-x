@@ -4,7 +4,6 @@ import dev.scx.ansi.Ansi;
 import dev.scx.app.ScxApp;
 import dev.scx.app.ScxAppModule;
 import dev.scx.reflect.ClassInfo;
-import dev.scx.reflect.ScxReflect;
 import dev.scx.scheduling.ScheduleHandle;
 import dev.scx.scheduling.ScxScheduling;
 
@@ -15,6 +14,10 @@ import java.util.stream.Stream;
 
 import static dev.scx.reflect.AccessModifier.PUBLIC;
 
+/// ScxAppSchedulingModule
+///
+/// @author scx567888
+/// @version 0.0.1
 public final class ScxAppSchedulingModule implements ScxAppModule {
 
     private final List<ScheduleHandle> scheduleHandleList;
@@ -31,8 +34,7 @@ public final class ScxAppSchedulingModule implements ScxAppModule {
         root:
         for (var componentDefinition : componentDefinitions) {
             var component = componentContainer.getComponent(componentDefinition.componentName());
-
-            var typeInfo = ScxReflect.typeOf(component.getClass());
+            var typeInfo = componentDefinition.componentType();
 
             // 只处理 classInfo
             if (!(typeInfo instanceof ClassInfo classInfo)) {
@@ -79,7 +81,6 @@ public final class ScxAppSchedulingModule implements ScxAppModule {
         Ansi.ansi()
             .brightBlue("已注册 " + scheduleHandleList.size() + " 个 Scheduled Task !!!")
             .println();
-
     }
 
     @Override
@@ -87,6 +88,7 @@ public final class ScxAppSchedulingModule implements ScxAppModule {
         for (var handle : scheduleHandleList) {
             handle.cancel();
         }
+        scheduleHandleList.clear();
     }
 
 }

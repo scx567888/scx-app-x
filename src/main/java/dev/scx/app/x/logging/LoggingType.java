@@ -1,5 +1,9 @@
 package dev.scx.app.x.logging;
 
+/// LoggingType
+///
+/// @author scx567888
+/// @version 0.0.1
 enum LoggingType {
 
     /// 打印到控制台

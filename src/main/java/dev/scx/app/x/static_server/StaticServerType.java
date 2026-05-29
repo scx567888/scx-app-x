@@ -1,5 +1,9 @@
 package dev.scx.app.x.static_server;
 
+/// StaticServerType
+///
+/// @author scx567888
+/// @version 0.0.1
 enum StaticServerType {
 
     STATIC_FILES("STATIC-FILES"),

@@ -1,4 +1,4 @@
-package dev.scx.app.x.web.template;
+package dev.scx.app.x.template;
 
 import freemarker.core.Environment;
 import freemarker.template.*;

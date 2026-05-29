@@ -4,10 +4,7 @@ import dev.scx.app.ScxApp;
 import dev.scx.app.ScxAppModule;
 import dev.scx.app.ScxAppModuleDefinition;
 import dev.scx.app.environment.ScxEnvironment;
-import dev.scx.app.environment.type.ConfiguredPath;
 import dev.scx.app.x.http.ScxAppHttpModule;
-import dev.scx.app.x.web.template.TemplateEngine;
-import dev.scx.app.x.web.template.TemplateReturnValueHandler;
 import dev.scx.web.ScxWeb;
 import dev.scx.web.annotation.Routes;
 
@@ -23,10 +20,7 @@ public final class ScxAppWebModule implements ScxAppModule {
 
     @Override
     public ScxAppModuleDefinition init(ScxEnvironment environment) {
-        var templatePath = environment.get("scx.web.template.path", ConfiguredPath.class, "AppRoot:templates");
-
         this.scxWeb = new ScxWeb();
-        this.scxWeb.addReturnValueHandler(new TemplateReturnValueHandler(new TemplateEngine(templatePath.path())));
 
         return ScxAppModuleDefinition.of()
             .componentSelector(c -> c.getAnnotation(Routes.class) != null)
@@ -42,7 +36,7 @@ public final class ScxAppWebModule implements ScxAppModule {
 
         var webRoutes = new ArrayList<>();
 
-        // 过滤所有候选类 种的 webRoute
+        // 过滤所有候选类中的 webRoute
         for (var candidate : scxApp.candidates()) {
             if (candidate.getAnnotation(Routes.class) != null) {
                 var component = scxApp.getComponent(candidate);
@@ -57,6 +51,7 @@ public final class ScxAppWebModule implements ScxAppModule {
         }
     }
 
+    /// 暴漏 scxWeb 允许其他模块动态修改
     public ScxWeb scxWeb() {
         return scxWeb;
     }

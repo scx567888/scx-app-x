@@ -13,6 +13,10 @@ import dev.scx.sql.JDBCConnectionInfo;
 import dev.scx.sql.SQLClient;
 import dev.scx.sql.TypeSQLResolver;
 
+/// ScxAppSQLModule
+///
+/// @author scx567888
+/// @version 0.0.1
 public final class ScxAppSQLModule implements ScxAppModule {
 
     private SQLClient sqlClient;
@@ -21,7 +25,7 @@ public final class ScxAppSQLModule implements ScxAppModule {
         var dataSourceUrl = environment.get("scx.sql.url", String.class);
         var dataSourceUsername = environment.get("scx.sql.username", String.class);
         var dataSourcePassword = environment.get("scx.sql.password", String.class);
-        var dataSourceParameters = environment.get("scx.sql.parameters", String[].class, "[]");
+        var dataSourceParameters = environment.get("scx.sql.parameters", String[].class, new String[0]);
 
         var jdbcConnectionInfo = new JDBCConnectionInfo(
             dataSourceUrl,
@@ -30,6 +34,7 @@ public final class ScxAppSQLModule implements ScxAppModule {
             dataSourceParameters
         );
 
+        // 这里额外添加一个 处理 json 的 handler
         var typeSQLResolver = TypeSQLResolver.builder()
             .registerDefaultHandlers()
             .registerHandlerFactory(new ObjectSQLHandlerFactory())
@@ -55,11 +60,12 @@ public final class ScxAppSQLModule implements ScxAppModule {
     @Override
     public ScxAppModuleDefinition init(ScxEnvironment environment) {
         this.sqlClient = initSQLClient(environment);
-
+        // 把 sqlClient 注入到 容器中
         return ScxAppModuleDefinition.of()
             .componentInstance(this.sqlClient);
     }
 
+    /// 暴漏 sqlClient, 方便外部使用
     public SQLClient sqlClient() {
         return this.sqlClient;
     }

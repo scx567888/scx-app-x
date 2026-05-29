@@ -19,6 +19,7 @@ import dev.scx.http.routing.x.cors.expose_headers.ExposeHeaders;
 import static dev.scx.http.headers.HttpHeaderName.*;
 import static dev.scx.http.method.HttpMethod.*;
 
+// todo 待处理
 public final class ScxAppCorsModule implements ScxAppModule {
 
     private static final HttpMethod[] DEFAULT_ALLOWED_METHODS = new HttpMethod[]{GET, POST, OPTIONS, DELETE, PATCH, PUT};
@@ -27,9 +28,6 @@ public final class ScxAppCorsModule implements ScxAppModule {
 
     /// Cors handler
     private CorsHandler corsHandler;
-
-    /// Cors handler 对应的 路由
-    private Route corsHandlerRoute;
 
     private static CorsHandler initCorsHandler(String allowedOriginPattern) {
         if (allowedOriginPattern == null) {
@@ -45,7 +43,14 @@ public final class ScxAppCorsModule implements ScxAppModule {
 
     @Override
     public ScxAppModuleDefinition init(ScxEnvironment environment) {
-        return ScxAppModuleDefinition.of().startBefore(ScxAppHttpModule.class);
+        var allowedOrigin = environment.get("scx.cors.allowed-origin", String.class, "*");
+
+        // 设置基本的 handler
+        this.corsHandler = initCorsHandler(allowedOrigin);
+
+        return ScxAppModuleDefinition.of()
+            .require(ScxAppHttpModule.class)
+            .startBefore(ScxAppHttpModule.class);
     }
 
     @Override
@@ -54,24 +59,16 @@ public final class ScxAppCorsModule implements ScxAppModule {
 
         var router = httpModule.router();
 
-        var allowedOrigin = scxApp.environment().get("scx.cors.allowed-origin", String.class, "*");
-
-        // 设置基本的 handler
-        this.corsHandler = initCorsHandler(allowedOrigin);
-
         // 注册路由
-        this.corsHandlerRoute = Route.of(PathMatcher.any(), MethodMatcher.any(), corsHandler);
+        var corsHandlerRoute = Route.of(PathMatcher.any(), MethodMatcher.any(), corsHandler);
 
         // 使用较靠前的优先级
-        router.route(-10000, this.corsHandlerRoute);
+        router.route(-10000, corsHandlerRoute);
     }
 
+    /// 暴漏 CorsHandler 允许外部动态修改.
     public CorsHandler corsHandler() {
         return corsHandler;
-    }
-
-    public Route corsHandlerRoute() {
-        return corsHandlerRoute;
     }
 
 }
