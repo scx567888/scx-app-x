@@ -42,7 +42,7 @@ public final class ScxAppLoggingModule implements ScxAppModule {
         defaultLoggerConfig.setStackTrace(defaultTrace);
 
         // 设置具体的日志
-        var loggers = environment.get("scx.logging.loggers", new TypeReference<List<LoggingConfig>>() {},new LoggingConfig[0]);
+        var loggers = environment.get("scx.logging.loggers", new TypeReference<List<LoggingConfig>>() {}, new LoggingConfig[0]);
 
         for (var logger : loggers) {
             if (logger.name == null || logger.name.isBlank()) {
