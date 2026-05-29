@@ -1,7 +1,7 @@
 package dev.scx.app.x.test;
 
-import dev.scx.app.module.component.Component;
-import dev.scx.app.module.scheduling.Scheduled;
+import dev.scx.app.x.component.Component;
+import dev.scx.app.x.scheduling.Scheduled;
 
 import java.lang.System.Logger;
 
