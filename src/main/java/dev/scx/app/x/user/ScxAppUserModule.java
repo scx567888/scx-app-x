@@ -20,15 +20,11 @@ import java.io.IOException;
 public abstract class ScxAppUserModule implements ScxAppModule {
 
     /// 根据 ScxModule 的 class 查找 所有 class
-    ///
-    /// @param cc c
-    /// @return class 列表 (注意这里返回的是不可变的列表 !!!)
-    /// @throws IOException r
-    public static Class<?>[] findClassListByScxModule(Class<? extends ScxAppModule> cc) throws IOException, ClassNotFoundException {
-        var allClassList = ScxCodeSource.of(cc).loadClasses();
-        var basePackageName = cc.getPackageName();
+    public static Class<?>[] findClassListByScxModule(Class<? extends ScxAppModule> clazz) throws IOException, ClassNotFoundException {
+        var classes = ScxCodeSource.of(clazz).loadClasses();
+        var basePackageName = clazz.getPackageName();
         var p = basePackageName + ".";
-        return allClassList.stream()
+        return classes.stream()
             .filter(c -> c.getPackageName().equals(basePackageName) || c.getPackageName().startsWith(p))
             .toArray(Class<?>[]::new);
     }
@@ -36,6 +32,7 @@ public abstract class ScxAppUserModule implements ScxAppModule {
     @Override
     public ScxAppModuleDefinition init(ScxEnvironment environment) throws IOException, ClassNotFoundException {
         var classListByScxModule = findClassListByScxModule(this.getClass());
+        // 注入
         return ScxAppModuleDefinition.of()
             .candidate(classListByScxModule);
     }
