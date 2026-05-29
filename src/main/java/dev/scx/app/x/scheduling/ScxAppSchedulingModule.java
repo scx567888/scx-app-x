@@ -88,6 +88,7 @@ public final class ScxAppSchedulingModule implements ScxAppModule {
         for (var handle : scheduleHandleList) {
             handle.cancel();
         }
+        scheduleHandleList.clear();
     }
 
 }
