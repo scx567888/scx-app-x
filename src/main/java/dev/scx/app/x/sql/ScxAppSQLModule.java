@@ -60,7 +60,7 @@ public final class ScxAppSQLModule implements ScxAppModule {
     @Override
     public ScxAppModuleDefinition init(ScxEnvironment environment) {
         this.sqlClient = initSQLClient(environment);
-
+        // 把 sqlClient 注入到 容器中
         return ScxAppModuleDefinition.of()
             .componentInstance(this.sqlClient);
     }
