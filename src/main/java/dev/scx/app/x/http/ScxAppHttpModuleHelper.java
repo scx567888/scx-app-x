@@ -1,6 +1,5 @@
 package dev.scx.app.x.http;
 
-import dev.scx.http.routing.request_matcher.RequestMatcher;
 import dev.scx.http.routing.request_matcher.TypeIsRequestMatcher;
 import dev.scx.http.routing.route_table.PriorityRouteEntry;
 import dev.scx.websocket.x.ScxServerWebSocketHandshakeRequest;
@@ -29,7 +28,7 @@ final class ScxAppHttpModuleHelper {
     public static List<PriorityRouteEntry> filterHttpRoutes(List<PriorityRouteEntry> routeEntries) {
         // 所有不是 WebSocket 的我们都认为是 http 路由
         return routeEntries.stream().filter(r -> {
-                RequestMatcher requestMatcher = r.route().requestMatcher();
+                var requestMatcher = r.route().requestMatcher();
                 if (requestMatcher instanceof TypeIsRequestMatcher t) {
                     return t.requestType() != ScxServerWebSocketHandshakeRequest.class;
                 }
@@ -40,7 +39,7 @@ final class ScxAppHttpModuleHelper {
 
     public static List<PriorityRouteEntry> filterWebSocketRoutes(List<PriorityRouteEntry> routeEntries) {
         return routeEntries.stream().filter(r -> {
-                RequestMatcher requestMatcher = r.route().requestMatcher();
+                var requestMatcher = r.route().requestMatcher();
                 if (requestMatcher instanceof TypeIsRequestMatcher t) {
                     return t.requestType() == ScxServerWebSocketHandshakeRequest.class;
                 }
