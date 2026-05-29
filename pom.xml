@@ -95,18 +95,6 @@
 
         <dependency>
             <groupId>dev.scx</groupId>
-            <artifactId>scx-di</artifactId>
-            <version>${scx-di.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>dev.scx</groupId>
-            <artifactId>scx-ansi</artifactId>
-            <version>${scx-ansi.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>dev.scx</groupId>
             <artifactId>scx-jdbc-spy</artifactId>
             <version>${scx-jdbc-spy.version}</version>
         </dependency>
@@ -115,12 +103,6 @@
             <groupId>dev.scx</groupId>
             <artifactId>scx-logging</artifactId>
             <version>${scx-logging.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>dev.scx</groupId>
-            <artifactId>scx-string</artifactId>
-            <version>${scx-string.version}</version>
         </dependency>
 
         <dependency>
@@ -183,11 +165,8 @@
         <scx-web.version>0.5.0</scx-web.version>
         <scx-data-sql.version>0.3.0</scx-data-sql.version>
         <scx-scheduling.version>0.2.0</scx-scheduling.version>
-        <scx-di.version>0.4.0</scx-di.version>
-        <scx-ansi.version>0.3.0</scx-ansi.version>
         <scx-jdbc-spy.version>0.3.0</scx-jdbc-spy.version>
         <scx-logging.version>0.0.1</scx-logging.version>
-        <scx-string.version>0.1.0</scx-string.version>
         <scx-lock.version>0.1.0</scx-lock.version>
         <thumbnailator.version>0.4.21</thumbnailator.version>
         <freemarker.version>2.3.34</freemarker.version>
