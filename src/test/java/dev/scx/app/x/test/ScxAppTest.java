@@ -2,6 +2,7 @@ package dev.scx.app.x.test;
 
 
 import dev.scx.app.*;
+import dev.scx.app.x.template.TemplateModule;
 import dev.scx.app.x.user.ScxAppUserModule;
 import dev.scx.app.x.*;
 import dev.scx.app.x.base.BaseModelService;
@@ -84,6 +85,7 @@ public class ScxAppTest extends ScxAppUserModule {
             .module(new ScxAppSQLModule())
             .module(new ScxAppFixTableModule())
             // 以下是 偏业务的模块
+            .module(new TemplateModule())
             .module(new FSSModule())
             .module(new RedirectModule())
             .module(new CRUDModule())

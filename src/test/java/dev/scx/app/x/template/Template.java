@@ -1,4 +1,4 @@
-package dev.scx.app.x.web.template;
+package dev.scx.app.x.template;
 
 import dev.scx.http.ScxHttpServerRequest;
 import dev.scx.http.media_type.ScxMediaType;
