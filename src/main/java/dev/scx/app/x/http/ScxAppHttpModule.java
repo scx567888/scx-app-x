@@ -77,7 +77,7 @@ public final class ScxAppHttpModule implements ScxAppModule {
         var webSocketRoutes = filterWebSocketRoutes(routeEntries);
 
         Ansi.ansi()
-            .brightGreen("已加载 " + httpRoutes.size() + " 个 Http 路由 !!!").ln()
+            .brightGreen("已加载 " + httpRoutes.size() + " 个 HTTP 路由 !!!").ln()
             .brightBlue("已加载 " + webSocketRoutes.size() + " 个 WebSocket 路由 !!!")
             .println();
 
@@ -91,7 +91,7 @@ public final class ScxAppHttpModule implements ScxAppModule {
 
         o.green("> 本地: " + httpOrHttps + "://localhost:" + realPort + "/").ln();
 
-        var normalIP = getLocalIPAddress(c -> c instanceof Inet4Address);
+        var normalIP = getLocalIPAddress();
 
         for (var ip : normalIP) {
             o.green("> 网络: " + httpOrHttps + "://" + ip.getHostAddress() + ":" + realPort + "/").ln();
