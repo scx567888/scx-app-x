@@ -69,6 +69,97 @@
 
     <dependencies>
 
+        <dependency>
+            <groupId>dev.scx</groupId>
+            <artifactId>scx-web</artifactId>
+            <version>${scx-web.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>dev.scx</groupId>
+            <artifactId>scx-data-sql</artifactId>
+            <version>${scx-data-sql.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>dev.scx</groupId>
+            <artifactId>scx-scheduling</artifactId>
+            <version>${scx-scheduling.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>dev.scx</groupId>
+            <artifactId>scx-di</artifactId>
+            <version>${scx-di.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>dev.scx</groupId>
+            <artifactId>scx-ansi</artifactId>
+            <version>${scx-ansi.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>dev.scx</groupId>
+            <artifactId>scx-jdbc-spy</artifactId>
+            <version>${scx-jdbc-spy.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>dev.scx</groupId>
+            <artifactId>scx-logging</artifactId>
+            <version>${scx-logging.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>dev.scx</groupId>
+            <artifactId>scx-string</artifactId>
+            <version>${scx-string.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>dev.scx</groupId>
+            <artifactId>scx-lock</artifactId>
+            <version>${scx-lock.version}</version>
+        </dependency>
+
+        <!-- 图像处理包工具包 , 用于对图片进行简单的处理,如 切割,缩放 ,转码等 -->
+        <dependency>
+            <groupId>net.coobird</groupId>
+            <artifactId>thumbnailator</artifactId>
+            <version>${thumbnailator.version}</version>
+        </dependency>
+
+        <!-- Freemarker 用于前台页面渲染工作 -->
+        <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+            <version>${freemarker.version}</version>
+        </dependency>
+
+        <!-- 数据库连接池 用于减少数据库连接创建时的性能消耗 -->
+        <dependency>
+            <groupId>com.zaxxer</groupId>
+            <artifactId>HikariCP</artifactId>
+            <version>${hikaricp.version}</version>
+        </dependency>
+
+        <!-- 轻量级的加密解密工具包 , 用于简化一些密码校验及敏感数据加密的操作 -->
+        <dependency>
+            <groupId>org.jasypt</groupId>
+            <artifactId>jasypt</artifactId>
+            <version>${jasypt.version}</version>
+        </dependency>
+
+        <!-- ****************** 以下为测试依赖 ****************** -->
+
+        <dependency>
+            <groupId>dev.scx</groupId>
+            <artifactId>scx-sql-mysql</artifactId>
+            <version>${scx-sql-mysql.version}</version>
+            <scope>test</scope>
+        </dependency>
+
         <!-- TestNG 测试包 -->
         <dependency>
             <groupId>org.testng</groupId>
@@ -82,7 +173,21 @@
     <properties>
 
         <!-- *********************** 以下为依赖包版本 *********************** -->
-        <testng.version>7.11.0</testng.version>
+        <scx-web.version>0.5.0</scx-web.version>
+        <scx-data-sql.version>0.3.0</scx-data-sql.version>
+        <scx-scheduling.version>0.2.0</scx-scheduling.version>
+        <scx-di.version>0.4.0</scx-di.version>
+        <scx-ansi.version>0.3.0</scx-ansi.version>
+        <scx-jdbc-spy.version>0.3.0</scx-jdbc-spy.version>
+        <scx-logging.version>0.0.1</scx-logging.version>
+        <scx-string.version>0.1.0</scx-string.version>
+        <scx-lock.version>0.1.0</scx-lock.version>
+        <thumbnailator.version>0.4.21</thumbnailator.version>
+        <freemarker.version>2.3.34</freemarker.version>
+        <hikaricp.version>7.0.2</hikaricp.version>
+        <jasypt.version>1.9.3</jasypt.version>
+        <scx-sql-mysql.version>0.4.0</scx-sql-mysql.version>
+        <testng.version>7.12.0</testng.version>
 
     </properties>
 

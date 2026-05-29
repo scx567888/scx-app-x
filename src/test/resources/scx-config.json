@@ -1,0 +1,67 @@
+{
+  "scx": {
+    "http": {
+      "port": 8888,
+      "max-payload-size": "11MB",
+      "use-development-error-page": true,
+      "ssl": {
+        "enabled": false,
+        "path": "AppRoot:ssl\\scx_dev.jks",
+        "password": "123456"
+      }
+    },
+    "sql": {
+      "url": "jdbc:mysql://127.0.0.1:3306/scx",
+      "username": "root",
+      "password": "root",
+      "parameters": [
+        "allowMultiQueries=true",
+        "rewriteBatchedStatements=true",
+        "createDatabaseIfNotExist=true"
+      ],
+      "use-spy": true
+    },
+    "fix-table": {
+      "enabled": true
+    },
+    "web": {
+      "template":{
+        "path": "AppRoot:c"
+      }
+    },
+    "cors": {
+      "allowed-origin": "*"
+    },
+    "static-servers": [
+      {
+        "host": null,
+        "type": "static-files",
+        "route": "/*",
+        "path": "AppRoot:c"
+      },
+      {
+        "host": "xxxx",
+        "type": "single-file",
+        "route": "/*",
+        "path": "AppRoot:c/index.html"
+      }
+    ],
+    "logging": {
+      "default": {
+        "level": "e",
+        "type": "console",
+        "path": null,
+        "trace": false
+      },
+      "loggers": [
+        {
+          "name": "ScxSpy",
+          "level": "DEBUG",
+          "type": "CONSOLE",
+          "path": "AppRoot:sql-logs",
+          "trace": false
+        }
+      ]
+    }
+  }
+}

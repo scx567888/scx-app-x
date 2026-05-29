@@ -1,0 +1,67 @@
+package dev.scx.app.x.sql;
+
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
+import dev.scx.app.ScxAppModule;
+import dev.scx.app.ScxAppModuleDefinition;
+import dev.scx.app.environment.ScxEnvironment;
+import dev.scx.app.module.sql.handler.ObjectSQLHandlerFactory;
+import dev.scx.jdbc.spy.ScxJdbcSpy;
+import dev.scx.jdbc.spy.listener.logging.LoggingDataSourceListener;
+import dev.scx.jdbc.spy.listener.logging.PreparedStatementLogStyle;
+import dev.scx.sql.JDBCConnectionInfo;
+import dev.scx.sql.SQLClient;
+import dev.scx.sql.TypeSQLResolver;
+
+public final class ScxAppSQLModule implements ScxAppModule {
+
+    private SQLClient sqlClient;
+
+    private static SQLClient initSQLClient(ScxEnvironment environment) {
+        var dataSourceUrl = environment.get("scx.sql.url", String.class);
+        var dataSourceUsername = environment.get("scx.sql.username", String.class);
+        var dataSourcePassword = environment.get("scx.sql.password", String.class);
+        var dataSourceParameters = environment.get("scx.sql.parameters", String[].class, "[]");
+
+        var jdbcConnectionInfo = new JDBCConnectionInfo(
+            dataSourceUrl,
+            dataSourceUsername,
+            dataSourcePassword,
+            dataSourceParameters
+        );
+
+        var typeSQLResolver = TypeSQLResolver.builder()
+            .registerDefaultHandlers()
+            .registerHandlerFactory(new ObjectSQLHandlerFactory())
+            .build();
+
+        var useSpy = environment.get("scx.sql.use-spy", boolean.class, false);
+
+        return SQLClient.of(
+            jdbcConnectionInfo,
+            typeSQLResolver,
+            d -> {
+                var hikariConfig = new HikariConfig();
+                hikariConfig.setDataSource(d);
+                return new HikariDataSource(hikariConfig);
+            },
+            d -> useSpy ?
+                ScxJdbcSpy.spy(d, new LoggingDataSourceListener(PreparedStatementLogStyle.RENDERED_SQL)) :
+                d
+        );
+
+    }
+
+    @Override
+    public ScxAppModuleDefinition init(ScxEnvironment environment) {
+        this.sqlClient = initSQLClient(environment);
+
+        return ScxAppModuleDefinition.of()
+            .componentInstance(this.sqlClient);
+    }
+
+    public SQLClient sqlClient() {
+        return this.sqlClient;
+    }
+
+}
