@@ -2,7 +2,7 @@ package dev.scx.app.x.test;
 
 
 import dev.scx.app.*;
-import dev.scx.app.x.template.TemplateModule;
+import dev.scx.app.x.template.ScxAppTemplateModule;
 import dev.scx.app.x.user.ScxAppUserModule;
 import dev.scx.app.x.*;
 import dev.scx.app.x.base.BaseModelService;
@@ -41,13 +41,11 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
-import java.net.Inet4Address;
 import java.nio.charset.StandardCharsets;
 import java.time.Duration;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static dev.scx.app.x.ScxAppContext.GLOBAL_SCX;
@@ -85,7 +83,7 @@ public class ScxAppTest extends ScxAppUserModule {
             .module(new ScxAppSQLModule())
             .module(new ScxAppFixTableModule())
             // 以下是 偏业务的模块
-            .module(new TemplateModule())
+            .module(new ScxAppTemplateModule())
             .module(new FSSModule())
             .module(new RedirectModule())
             .module(new CRUDModule())
