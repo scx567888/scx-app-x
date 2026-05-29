@@ -71,6 +71,12 @@
 
         <dependency>
             <groupId>dev.scx</groupId>
+            <artifactId>scx-app</artifactId>
+            <version>${scx-app.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>dev.scx</groupId>
             <artifactId>scx-web</artifactId>
             <version>${scx-web.version}</version>
         </dependency>
@@ -173,6 +179,7 @@
     <properties>
 
         <!-- *********************** 以下为依赖包版本 *********************** -->
+        <scx-app.version>0.0.1</scx-app.version>
         <scx-web.version>0.5.0</scx-web.version>
         <scx-data-sql.version>0.3.0</scx-data-sql.version>
         <scx-scheduling.version>0.2.0</scx-scheduling.version>
