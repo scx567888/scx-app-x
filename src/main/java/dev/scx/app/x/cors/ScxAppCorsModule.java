@@ -19,6 +19,7 @@ import dev.scx.http.routing.x.cors.expose_headers.ExposeHeaders;
 import static dev.scx.http.headers.HttpHeaderName.*;
 import static dev.scx.http.method.HttpMethod.*;
 
+// todo 待处理
 public final class ScxAppCorsModule implements ScxAppModule {
 
     private static final HttpMethod[] DEFAULT_ALLOWED_METHODS = new HttpMethod[]{GET, POST, OPTIONS, DELETE, PATCH, PUT};

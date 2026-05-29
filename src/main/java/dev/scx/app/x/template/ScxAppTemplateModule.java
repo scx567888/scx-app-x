@@ -9,8 +9,13 @@ import dev.scx.app.x.web.ScxAppWebModule;
 
 public final class ScxAppTemplateModule implements ScxAppModule {
 
+    private TemplateEngine templateEngine;
+
     @Override
     public ScxAppModuleDefinition init(ScxEnvironment environment) {
+        var templatePath = environment.get("scx.template.path", ConfiguredPath.class, "AppRoot:templates");
+        this.templateEngine = new TemplateEngine(templatePath.path());
+
         return ScxAppModuleDefinition.of()
             .require(ScxAppWebModule.class)
             .startBefore(ScxAppWebModule.class);
@@ -19,9 +24,13 @@ public final class ScxAppTemplateModule implements ScxAppModule {
     @Override
     public void start(ScxApp scxApp) throws Exception {
         var webModule = scxApp.getComponent(ScxAppWebModule.class);
-        var templatePath = scxApp.environment().get("scx.template.path", ConfiguredPath.class, "AppRoot:templates");
 
-        webModule.scxWeb().addReturnValueHandler(new TemplateReturnValueHandler(new TemplateEngine(templatePath.path())));
+        webModule.scxWeb().addReturnValueHandler(new TemplateReturnValueHandler(templateEngine));
+    }
+
+    /// 暴漏 templateEngine, 允许外部添加指令
+    public TemplateEngine templateEngine() {
+        return templateEngine;
     }
 
 }
