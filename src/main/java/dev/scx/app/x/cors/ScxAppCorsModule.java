@@ -46,7 +46,9 @@ public final class ScxAppCorsModule implements ScxAppModule {
 
     @Override
     public ScxAppModuleDefinition init(ScxEnvironment environment) {
-        return ScxAppModuleDefinition.of().startBefore(ScxAppHttpModule.class);
+        return ScxAppModuleDefinition.of()
+            .require(ScxAppHttpModule.class)
+            .startBefore(ScxAppHttpModule.class);
     }
 
     @Override
