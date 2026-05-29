@@ -7,6 +7,10 @@ import dev.scx.app.environment.ScxEnvironment;
 import dev.scx.app.environment.type.ConfiguredPath;
 import dev.scx.app.x.web.ScxAppWebModule;
 
+/// ScxAppTemplateModule
+///
+/// @author scx567888
+/// @version 0.0.1
 public final class ScxAppTemplateModule implements ScxAppModule {
 
     private TemplateEngine templateEngine;
