@@ -5,7 +5,7 @@ import dev.scx.app.ScxApp;
 import dev.scx.app.ScxAppModule;
 import dev.scx.app.ScxAppModuleDefinition;
 import dev.scx.app.environment.ScxEnvironment;
-import dev.scx.app.module.http.ScxAppHttpModule;
+import dev.scx.app.x.http.ScxAppHttpModule;
 import dev.scx.http.routing.Route;
 import dev.scx.http.routing.method_matcher.MethodMatcher;
 import dev.scx.http.routing.path_matcher.PathMatcher;
@@ -14,7 +14,7 @@ import dev.scx.http.routing.x.single_file.SingleFileHandler;
 import dev.scx.http.routing.x.static_files.StaticFilesHandler;
 import dev.scx.reflect.TypeReference;
 
-import static dev.scx.app.module.static_server.ScxAppStaticServerModuleHelper.toType;
+import static dev.scx.app.x.static_server.ScxAppStaticServerModuleHelper.toType;
 import static dev.scx.http.headers.HttpHeaderName.HOST;
 
 /// ScxAppStaticServerModule

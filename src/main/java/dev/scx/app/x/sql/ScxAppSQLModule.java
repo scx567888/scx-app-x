@@ -5,7 +5,7 @@ import com.zaxxer.hikari.HikariDataSource;
 import dev.scx.app.ScxAppModule;
 import dev.scx.app.ScxAppModuleDefinition;
 import dev.scx.app.environment.ScxEnvironment;
-import dev.scx.app.module.sql.handler.ObjectSQLHandlerFactory;
+import dev.scx.app.x.sql.handler.ObjectSQLHandlerFactory;
 import dev.scx.jdbc.spy.ScxJdbcSpy;
 import dev.scx.jdbc.spy.listener.logging.LoggingDataSourceListener;
 import dev.scx.jdbc.spy.listener.logging.PreparedStatementLogStyle;

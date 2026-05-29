@@ -18,7 +18,7 @@ import dev.scx.websocket.x.WebSocketUpgradeRequestFactory;
 import java.io.IOException;
 import java.net.Inet4Address;
 
-import static dev.scx.app.module.http.ScxAppHttpModuleHelper.*;
+import static dev.scx.app.x.http.ScxAppHttpModuleHelper.*;
 
 /// ScxAppHttpModule
 ///

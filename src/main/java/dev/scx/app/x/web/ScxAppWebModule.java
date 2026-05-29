@@ -5,9 +5,9 @@ import dev.scx.app.ScxAppModule;
 import dev.scx.app.ScxAppModuleDefinition;
 import dev.scx.app.environment.ScxEnvironment;
 import dev.scx.app.environment.type.ConfiguredPath;
-import dev.scx.app.module.http.ScxAppHttpModule;
-import dev.scx.app.module.web.template.TemplateEngine;
-import dev.scx.app.module.web.template.TemplateReturnValueHandler;
+import dev.scx.app.x.http.ScxAppHttpModule;
+import dev.scx.app.x.web.template.TemplateEngine;
+import dev.scx.app.x.web.template.TemplateReturnValueHandler;
 import dev.scx.web.ScxWeb;
 import dev.scx.web.annotation.Routes;
 

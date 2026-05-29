@@ -1,8 +1,8 @@
 package dev.scx.app.x.static_server;
 
 
-import static dev.scx.app.module.static_server.StaticServerType.SINGLE_FILE;
-import static dev.scx.app.module.static_server.StaticServerType.STATIC_FILES;
+import static dev.scx.app.x.static_server.StaticServerType.SINGLE_FILE;
+import static dev.scx.app.x.static_server.StaticServerType.STATIC_FILES;
 
 final class ScxAppStaticServerModuleHelper {
 

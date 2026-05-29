@@ -4,7 +4,7 @@ import dev.scx.app.ScxApp;
 import dev.scx.app.ScxAppModule;
 import dev.scx.app.ScxAppModuleDefinition;
 import dev.scx.app.environment.ScxEnvironment;
-import dev.scx.app.module.http.ScxAppHttpModule;
+import dev.scx.app.x.http.ScxAppHttpModule;
 import dev.scx.http.headers.HttpHeaderName;
 import dev.scx.http.method.HttpMethod;
 import dev.scx.http.routing.Route;

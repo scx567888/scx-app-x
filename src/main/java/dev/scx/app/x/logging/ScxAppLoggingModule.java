@@ -12,8 +12,8 @@ import dev.scx.reflect.TypeReference;
 
 import java.util.List;
 
-import static dev.scx.app.module.logging.ScxAppLoggingModuleHelper.toLevel;
-import static dev.scx.app.module.logging.ScxAppLoggingModuleHelper.toType;
+import static dev.scx.app.x.logging.ScxAppLoggingModuleHelper.toLevel;
+import static dev.scx.app.x.logging.ScxAppLoggingModuleHelper.toType;
 
 /// ScxAppLoggingModule
 ///

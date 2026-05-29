@@ -5,10 +5,10 @@ import dev.scx.app.ScxApp;
 import dev.scx.app.ScxAppModule;
 import dev.scx.app.ScxAppModuleDefinition;
 import dev.scx.app.environment.ScxEnvironment;
-import dev.scx.app.module.http.ScxAppHttpModule;
-import dev.scx.app.module.sql.ScxAppSQLModule;
+import dev.scx.app.x.http.ScxAppHttpModule;
+import dev.scx.app.x.sql.ScxAppSQLModule;
 
-import static dev.scx.app.module.fix_table.ScxAppFixTableModuleHelper.*;
+import static dev.scx.app.x.fix_table.ScxAppFixTableModuleHelper.*;
 
 /// ScxAppFixTableModule
 ///
