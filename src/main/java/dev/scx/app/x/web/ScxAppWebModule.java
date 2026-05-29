@@ -42,7 +42,7 @@ public final class ScxAppWebModule implements ScxAppModule {
 
         var webRoutes = new ArrayList<>();
 
-        // 过滤所有候选类 种的 webRoute
+        // 过滤所有候选类中的 webRoute
         for (var candidate : scxApp.candidates()) {
             if (candidate.getAnnotation(Routes.class) != null) {
                 var component = scxApp.getComponent(candidate);
@@ -57,6 +57,7 @@ public final class ScxAppWebModule implements ScxAppModule {
         }
     }
 
+    /// 暴漏 scxWeb 允许其他模块动态修改
     public ScxWeb scxWeb() {
         return scxWeb;
     }
